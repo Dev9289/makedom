@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account — MakeUrWebsite</title>
+  <link rel="icon" type="image/png" href="pics/1.png">
+  <link rel="stylesheet" href="css/global.css" />
+  <style>
+    .account-layout {
+      min-height: calc(100vh - 80px);
+      padding: 120px 24px 60px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .account-box {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .profile-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    .profile-info h1 {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+
+    .profile-info p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold-light), var(--gold-dark));
+    }
+
+    .project-title {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .project-detail {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .project-detail strong {
+      color: var(--white);
+      display: inline-block;
+      width: 120px;
+    }
+
+    .project-message {
+      margin-top: 24px;
+      padding: 16px;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      color: var(--muted-light);
+      line-height: 1.6;
+    }
+
+    .no-project {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--muted);
+      font-size: 1rem;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px dashed var(--border);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Make<span>Ur</span>Website</a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="auth.html" class="nav-auth-link" id="nav-auth-link">Login</a>
+        <button class="btn btn-outline btn-sm" id="nav-logout-btn" style="display:none;"
+          onclick="Auth.logout()">Logout</button>
+      </div>
+      <!-- Hamburger -->
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="account-layout">
+    <div class="account-box">
+
+      <div class="profile-header">
+        <div class="profile-avatar" id="acc-avatar">?</div>
+        <div class="profile-info">
+          <h1 id="acc-name">Loading...</h1>
+          <p id="acc-email">Please wait</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:var(--font-head); margin-bottom:16px;">Assigned Projects</h3>
+
+      <div id="project-container">
+        <div class="spinner" style="margin: 40px auto;"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/account.js"></script>
+</body>
+
+</html>

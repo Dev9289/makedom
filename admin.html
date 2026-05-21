@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — MakeUrWebsite</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="pics/1.png">
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+
+<body>
+
+  <div class="admin-layout">
+
+    <!-- ════════════════════════════════
+         SIDEBAR
+    ════════════════════════════════ -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">Make<span>Ur</span>Website</div>
+        <div class="sidebar-badge">⚙ Admin Panel</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-label">Main</div>
+        <div class="sidebar-link active" data-section="overview">
+          <span class="icon">📊</span> Overview
+        </div>
+        <div class="sidebar-link" data-section="projects">
+          <span class="icon">🗂️</span> Projects
+        </div>
+        <div class="sidebar-nav-label">Content</div>
+        <div class="sidebar-link" data-section="stats">
+          <span class="icon">📈</span> Site Stats
+        </div>
+        <div class="sidebar-nav-label">Users & Data</div>
+        <div class="sidebar-link" data-section="messages">
+          <span class="icon">💬</span> Messages
+          <span class="count-badge" id="badge-messages">0</span>
+        </div>
+        <div class="sidebar-link" data-section="users">
+          <span class="icon">👥</span> Registered Users
+        </div>
+        <div class="sidebar-link" data-section="assigned">
+          <span class="icon">📋</span> Assigned Projects
+        </div>
+        <div class="sidebar-nav-label">CRM</div>
+        <div class="sidebar-link" data-section="clients">
+          <span class="icon">👔</span> Clients CRM
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar" id="sidebar-avatar">A</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-email" id="sidebar-email">admin@example.com</div>
+            <div class="sidebar-user-role">Administrator</div>
+          </div>
+        </div>
+        <button class="sidebar-link" id="admin-logout" style="width:100%;text-align:left">
+          <span class="icon">🚪</span> Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- ════════════════════════════════
+         MAIN CONTENT
+    ════════════════════════════════ -->
+    <main class="admin-main">
+
+      <!-- Top Bar -->
+      <div class="admin-topbar">
+        <div style="display:flex;align-items:center;gap:12px">
+          <button class="sidebar-toggle-btn" id="sidebar-toggle">☰ Menu</button>
+          <span class="topbar-title" id="topbar-title">Dashboard Overview</span>
+        </div>
+        <div class="topbar-right">
+          <a href="index.html" class="btn btn-ghost btn-sm">← View Site</a>
+          <button class="btn btn-outline btn-sm" id="topbar-logout">Logout</button>
+        </div>
+      </div>
+
+      <!-- ── OVERVIEW ── -->
+      <div class="admin-section active" id="section-overview">
+        <div class="overview-cards">
+          <div class="ov-card">
+            <div class="ov-icon">🌐</div>
+            <div class="ov-value" id="ov-websites">—</div>
+            <div class="ov-label">Websites Completed</div>
+          </div>
+          <div class="ov-card">
+            <div class="ov-icon">🗂️</div>
+            <div class="ov-value" id="ov-projects">—</div>
+            <div class="ov-label">Projects in DB</div>
+          </div>
+          <div class="ov-card">
+            <div class="ov-icon">💬</div>
+            <div class="ov-value" id="ov-messages">—</div>
+            <div class="ov-label">Contact Messages</div>
+          </div>
+          <div class="ov-card">
+            <div class="ov-icon">😊</div>
+            <div class="ov-value" id="ov-clients">—</div>
+            <div class="ov-label">Happy Clients</div>
+          </div>
+        </div>
+
+        <div
+          style="margin-top:24px;padding:28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg)">
+          <h3 style="font-family:var(--font-head);font-size:1rem;margin-bottom:12px;color:var(--gold)">Quick Actions
+          </h3>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn btn-primary btn-sm" onclick="openProjectModal()">+ Add Project</button>
+            <button class="btn btn-outline btn-sm" onclick="loadSection('messages')">View Messages</button>
+            <button class="btn btn-outline btn-sm" onclick="loadSection('stats')">Edit Stats</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PROJECTS ── -->
+      <div class="admin-section" id="section-projects">
+        <div class="admin-table-wrap">
+          <div class="table-header">
+            <h3>All Projects</h3>
+            <button class="btn btn-primary btn-sm" onclick="openProjectModal()">+ Add Project</button>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Title</th>
+                  <th>Technologies</th>
+                  <th>Price</th>
+                  <th>Featured</th>
+                  <th>Public</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="projects-tbody">
+                <tr>
+                  <td colspan="6" style="text-align:center;padding:40px;color:var(--muted)">Loading…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STATS ── -->
+      <div class="admin-section" id="section-stats">
+        <div style="max-width:640px">
+          <div class="admin-table-wrap" style="padding:28px">
+            <div class="table-header" style="padding:0 0 20px">
+              <h3>Homepage Stats</h3>
+            </div>
+            <form id="stats-form">
+              <div class="stats-edit-grid">
+                <div class="form-group">
+                  <label class="form-label" for="stat-websites-input">Websites Completed</label>
+                  <input type="number" id="stat-websites-input" class="form-input" min="0" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="stat-projects-input">Projects Delivered</label>
+                  <input type="number" id="stat-projects-input" class="form-input" min="0" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="stat-clients-input">Happy Clients</label>
+                  <input type="number" id="stat-clients-input" class="form-input" min="0" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="stat-years-input">Years of Experience</label>
+                  <input type="number" id="stat-years-input" class="form-input" min="0" />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Stats ✦</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── MESSAGES ── -->
+      <div class="admin-section" id="section-messages">
+        <div id="messages-grid">
+          <div class="loading-center">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── USERS ── -->
+      <div class="admin-section" id="section-users">
+        <div class="admin-table-wrap">
+          <div class="table-header">
+            <h3>Registered Users</h3>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="users-tbody">
+                <tr>
+                  <td colspan="5" style="text-align:center;padding:40px;color:var(--muted)">Loading…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ASSIGNED PROJECTS ── -->
+      <div class="admin-section" id="section-assigned">
+        <!-- Analytics Graphs -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 24px;">
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
+            <h4 style="color:var(--muted); font-size:0.9rem; margin-bottom:16px;">Total Revenue (Completed)</h4>
+            <div style="height:250px; position:relative;"><canvas id="revenueChart"></canvas></div>
+          </div>
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
+            <h4 style="color:var(--muted); font-size:0.9rem; margin-bottom:16px;">Projects by Status</h4>
+            <div style="height:250px; position:relative;"><canvas id="statusChart"></canvas></div>
+          </div>
+        </div>
+
+        <div class="admin-table-wrap">
+          <div class="table-header">
+            <h3>Assigned Projects</h3>
+            <button class="btn btn-primary btn-sm" onclick="openAssignModal()">+ Assign Project</button>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Title</th>
+                  <th>Mobile</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="assigned-tbody">
+                <tr>
+                  <td colspan="6" style="text-align:center;padding:40px;color:var(--muted)">Loading…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CLIENTS CRM ── -->
+      <div class="admin-section" id="section-clients">
+        <div class="admin-table-wrap">
+          <div class="table-header">
+            <h3>Outreach Clients (CRM)</h3>
+            <button class="btn btn-primary btn-sm" onclick="openClientModal()">+ Add Client</button>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Client Name</th>
+                  <th>Instagram</th>
+                  <th>Phone</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="clients-tbody">
+                <tr>
+                  <td colspan="5" style="text-align:center;padding:40px;color:var(--muted)">Loading…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ════════════════════════════════
+       PROJECT MODAL
+  ════════════════════════════════ -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modal-proj-title">Add New Project</h3>
+        <span class="modal-close" onclick="closeModal('project-modal')">✕</span>
+      </div>
+      <form id="project-form">
+        <input type="hidden" id="modal-proj-id" />
+        <div class="form-group">
+          <label class="form-label" for="proj-title">Project Title *</label>
+          <input type="text" id="proj-title" class="form-input" placeholder="e.g. E-Commerce Store" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="proj-desc">Description</label>
+          <textarea id="proj-desc" class="form-input" rows="3"
+            placeholder="Brief description of the project…"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="proj-techs">Technologies (comma-separated)</label>
+          <input type="text" id="proj-techs" class="form-input" placeholder="React, Node.js, Supabase" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="proj-price">Price (USD)</label>
+          <input type="number" id="proj-price" class="form-input" placeholder="1500" min="0" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="proj-url">Project Link (Live Website)</label>
+          <input type="url" id="proj-url" class="form-input" placeholder="https://..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="proj-image">Project Image</label>
+          <input type="file" id="proj-image" class="form-input" accept="image/*" />
+          <small style="color:var(--muted); margin-top:4px; display:block;">Leave empty to keep existing image</small>
+        </div>
+        <div class="form-group" style="display:flex;align-items:center;gap:20px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <input type="checkbox" id="proj-featured" style="accent-color:var(--gold);width:16px;height:16px" />
+            <label class="form-label" for="proj-featured" style="margin:0;cursor:pointer">Featured Project</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <input type="checkbox" id="proj-public" style="accent-color:var(--gold);width:16px;height:16px" checked />
+            <label class="form-label" for="proj-public" style="margin:0;cursor:pointer">Make Public</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('project-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Project ✦</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- ════════════════════════════════
+       ASSIGN PROJECT MODAL
+  ════════════════════════════════ -->
+  <div class="modal-overlay" id="assign-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modal-assign-title">Assign Project to User</h3>
+        <span class="modal-close" onclick="closeModal('assign-modal')">✕</span>
+      </div>
+      <form id="assign-form">
+        <input type="hidden" id="modal-assign-id" />
+        <div class="form-group">
+          <label class="form-label" for="assign-user">Select User *</label>
+          <select id="assign-user" class="form-input" required>
+            <option value="">Loading users...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="assign-title">Project Title *</label>
+          <input type="text" id="assign-title" class="form-input" placeholder="e.g. Real Estate Website" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="assign-mobile">Mobile Number *</label>
+          <input type="text" id="assign-mobile" class="form-input" placeholder="+123456789" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="assign-price">Website Price (USD)</label>
+          <input type="number" id="assign-price" class="form-input" placeholder="1500" min="0" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="assign-message">Project Message / Status</label>
+          <textarea id="assign-message" class="form-input" rows="4" placeholder="Message details..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('assign-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Assignment ✦</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- ════════════════════════════════
+       CLIENT CRM MODAL
+  ════════════════════════════════ -->
+  <div class="modal-overlay" id="client-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modal-client-title">Add Outreach Client</h3>
+        <span class="modal-close" onclick="closeModal('client-modal')">✕</span>
+      </div>
+      <form id="client-form">
+        <input type="hidden" id="modal-client-id" />
+        <div class="form-group">
+          <label class="form-label" for="client-name">Full Name *</label>
+          <input type="text" id="client-name" class="form-input" placeholder="Client Name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="client-insta">Instagram (Username or Link)</label>
+          <input type="text" id="client-insta" class="form-input" placeholder="@username or full link" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="client-phone">Phone Number</label>
+          <input type="text" id="client-phone" class="form-input" placeholder="+123456789" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="client-notes">Notes / Outreach Progress</label>
+          <textarea id="client-notes" class="form-input" rows="3" placeholder="Notes about outreach..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('client-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Client ✦</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- ════════════════════════════════
+       CONVERT MESSAGE MODAL
+  ════════════════════════════════ -->
+  <div class="modal-overlay" id="convert-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modal-convert-title">Convert Message to Project</h3>
+        <span class="modal-close" onclick="closeModal('convert-modal')">✕</span>
+      </div>
+      <form id="convert-form">
+        <input type="hidden" id="convert-msg-id" />
+        <div class="form-group">
+          <label class="form-label" for="convert-user">Select Registered User *</label>
+          <select id="convert-user" class="form-input" required>
+            <option value="">Loading users...</option>
+          </select>
+          <small style="color:var(--muted); margin-top:4px; display:block;">The user must have an account to be assigned a project.</small>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="convert-title">Project Title *</label>
+          <input type="text" id="convert-title" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="convert-mobile">Mobile Number *</label>
+          <input type="text" id="convert-mobile" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="convert-price">Website Price (USD) *</label>
+          <input type="number" id="convert-price" class="form-input" placeholder="1500" min="0" step="0.01" required />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('convert-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Assigned Project ✦</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+
+</html>

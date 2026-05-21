@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — MakeUrWebsite</title>
+  <link rel="icon" type="image/png" href="pics/1.png">
+  <meta name="description"
+    content="Get in touch with MakeUrWebsite. Tell us about your project and we'll build something amazing together." />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+</head>
+
+<body class="page-fade">
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Make<span>Ur</span>Website</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="auth.html" id="nav-auth-link" class="nav-auth-link">Login</a>
+        <button id="nav-logout-btn" class="btn btn-ghost btn-sm" style="display:none">Logout</button>
+        <a href="contact.html" class="btn btn-primary btn-sm">Get Started</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Mobile Menu ── -->
+  <div class="mobile-menu" id="mobile-menu">
+    <span class="mobile-close" id="mobile-close">✕</span>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="auth.html">Login</a>
+  </div>
+
+  <!-- ── Contact Page ── -->
+  <main class="contact-page">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- ── Info Column ── -->
+        <div class="contact-info-col reveal">
+          <div class="section-label">Get In Touch</div>
+          <h1>Let's build something <span class="gradient-text">extraordinary</span></h1>
+          <p>Tell us about your project and we'll get back to you within 24 hours with a tailored proposal.</p>
+
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div class="contact-item-text">
+                <span class="contact-item-label">Email</span>
+                <span class="contact-item-value">hello@makeurwebsite.com</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div class="contact-item-text">
+                <span class="contact-item-label">Phone</span>
+                <span class="contact-item-value">+1 (555) 000-0000</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">⏱️</div>
+              <div class="contact-item-text">
+                <span class="contact-item-label">Response Time</span>
+                <span class="contact-item-value">Within 24 hours</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">🌍</div>
+              <div class="contact-item-text">
+                <span class="contact-item-label">Availability</span>
+                <span class="contact-item-value">Worldwide — Remote First</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Form Column ── -->
+        <div class="contact-form-col reveal">
+          <div class="contact-form-box">
+            <h2>Send us a message</h2>
+            <p>Fill in the form and we'll get back to you shortly.</p>
+
+            <!-- Form -->
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label class="form-label" for="contact-name">Full Name *</label>
+                <input type="text" id="contact-name" class="form-input" placeholder="John Smith" data-err="err-name"
+                  autocomplete="name" required />
+                <div class="form-error-msg" id="err-name"></div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-phone">Phone Number *</label>
+                <input type="tel" id="contact-phone" class="form-input" placeholder="+1 (555) 000-0000"
+                  data-err="err-phone" autocomplete="tel" required />
+                <div class="form-error-msg" id="err-phone"></div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-request">Website Request *</label>
+                <textarea id="contact-request" class="form-input"
+                  placeholder="Tell us about your project — what kind of website do you need, what features are important, your timeline and budget expectations..."
+                  data-err="err-request" rows="6" required></textarea>
+                <div class="form-error-msg" id="err-request"></div>
+              </div>
+
+              <button type="submit" class="submit-btn" id="contact-submit">
+                Send Message ✦
+              </button>
+            </form>
+
+            <!-- Success State -->
+            <div class="success-msg" id="contact-success">
+              <div class="success-icon">✦</div>
+              <h3>Message Sent!</h3>
+              <p>Thank you for reaching out. We'll get back to you within 24 hours with a tailored proposal.</p>
+              <br>
+              <a href="index.html" class="btn btn-outline" style="margin-top:12px">← Back to Home</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo">Make<span>Ur</span>Website</div>
+          <p>We build modern, powerful websites for businesses of all sizes.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="contact.html">Contact</a>
+          <a href="auth.html">Login / Register</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#">Landing Pages</a>
+          <a href="#">E-Commerce</a>
+          <a href="#">SaaS Platforms</a>
+          <a href="#">Web Applications</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 <span>MakeUrWebsite</span>. All rights reserved.</span>
+        <span>Built with ✦ and precision</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast container -->
+  <div class="toast-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+
+</html>

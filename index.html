@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MakeUrWebsite — We Build Modern, Powerful Websites</title>
+  <meta name="description"
+    content="MakeUrWebsite crafts modern, high-performance websites for businesses. Premium web development with cutting-edge technology." />
+  <meta name="keywords" content="web development, website design, modern websites, business websites, MakeUrWebsite" />
+  <meta property="og:title" content="MakeUrWebsite — Premium Web Development" />
+  <meta property="og:description" content="We build modern, powerful websites for your business." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="pics/1.png">
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+
+<body class="page-fade">
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Make<span>Ur</span>Website</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="auth.html" id="nav-auth-link" class="nav-auth-link">Login</a>
+        <button id="nav-logout-btn" class="btn btn-ghost btn-sm" style="display:none">Logout</button>
+        <a href="contact.html" class="btn btn-primary btn-sm">Get Started</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Mobile Menu ── -->
+  <div class="mobile-menu" id="mobile-menu">
+    <span class="mobile-close" id="mobile-close">✕</span>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="auth.html">Login</a>
+    <a href="contact.html" style="color:var(--gold)">Get Started →</a>
+  </div>
+
+  <!-- ── Hero ── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="dot"></span>
+          Available for New Projects
+        </div>
+        <h1>
+          We build <span class="gold-word">modern,</span><br>
+          powerful websites<br>
+          for your business
+        </h1>
+        <p>
+          From stunning landing pages to full-stack web applications —
+          we craft digital experiences that convert visitors into customers
+          and scale with your growth.
+        </p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Start Your Project ✦</a>
+          <a href="projects.html" class="btn btn-outline btn-lg">View Our Work</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- ── Tech Stack Floating Icons ── -->
+  <section class="tech-float">
+    <div class="tech-float-label">Our Technology Stack</div>
+    <div class="tech-orbit" id="tech-orbit">
+      <!-- Orbit rings (visual) -->
+      <div class="orbit-ring orbit-ring-1"></div>
+      <div class="orbit-ring orbit-ring-2"></div>
+      <div class="orbit-ring orbit-ring-3"></div>
+      <!-- Center logo -->
+      <div class="orbit-center">MUW</div>
+      <!-- Icons injected by JS -->
+    </div>
+  </section>
+
+  <!-- ── Stats ── -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid reveal">
+        <div class="stat-item">
+          <div class="stat-number" id="stat-websites" data-suffix="+">0+</div>
+          <div class="stat-label">Websites Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="stat-projects" data-suffix="+">0+</div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="stat-clients" data-suffix="+">0+</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="stat-years" data-suffix="+">0+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Featured Projects ── -->
+  <section class="featured-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <div class="section-label">Portfolio</div>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <p class="section-subtitle">A selection of our finest work — crafted with precision, creativity, and
+            cutting-edge technology.</p>
+        </div>
+        <a href="projects.html" class="btn btn-outline">View All Projects →</a>
+      </div>
+      <div class="projects-grid" id="featured-grid">
+        <!-- Injected by JS -->
+        <div class="loading-center" style="grid-column:1/-1">
+          <div class="spinner"></div>
+          <span>Loading projects…</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box reveal">
+        <h2>Ready to build your <span class="gradient-text">dream website?</span></h2>
+        <p>Let's turn your vision into a reality. Share your idea and we'll create something extraordinary together.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Start a Project ✦</a>
+          <a href="projects.html" class="btn btn-outline btn-lg" style="color:white; border-color:rgba(255,255,255,0.3)">Browse Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo">Make<span>Ur</span>Website</div>
+          <p>We build modern, powerful websites for businesses of all sizes. From concept to launch, we've got you
+            covered.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="contact.html">Contact</a>
+          <a href="auth.html">Login / Register</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#">Landing Pages</a>
+          <a href="#">E-Commerce</a>
+          <a href="#">SaaS Platforms</a>
+          <a href="#">Web Applications</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 <span>MakeUrWebsite</span>. All rights reserved.</span>
+        <span>Built with ✦ and precision</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ── -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/home.js"></script>
+</body>
+
+</html>
